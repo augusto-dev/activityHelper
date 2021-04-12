@@ -49,6 +49,8 @@ getYear().then(() => {
       let frontActivities = ''
       let backActivities = ''
       let mobileActivities = ''
+      let qualityActivities = ''
+      let bugsActivities = ''
       let generalActivities = ''
 
       for (const activity of Object.keys(activities)) {
@@ -73,6 +75,20 @@ getYear().then(() => {
             mobileActivities += activities[activity].mobile.join(', ');
           }
         }
+        if (activities[activity].quality.length) {
+          if (qualityActivities) {
+            qualityActivities += ', ' + activities[activity].quality.join(', ');
+          } else {
+            qualityActivities += activities[activity].quality.join(', ');
+          }
+        }
+        if (activities[activity].bugs.length) {
+          if (mobileActivities) {
+            bugsActivities += ', ' + activities[activity].bugs.join(', ');
+          } else {
+            bugsActivities += activities[activity].bugs.join(', ');
+          }
+        }
         if (activities[activity].general.length) {
           if (generalActivities) {
             generalActivities += ', ' + activities[activity].general.join(', ');
@@ -81,15 +97,33 @@ getYear().then(() => {
           }
         }
       }
-      console.log()
-      console.log('Atividades do front:\n', frontActivities);
-      console.log('\n')
-      console.log('Atividades do back:\n', backActivities);
-      console.log('\n')
-      console.log('Atividades do mobile:\n', mobileActivities);
-      console.log('\n')
-      console.log('Atividades gerais:\n', generalActivities);
-      console.log('\n')
+      console.log('============================================================\n')
+      if (frontActivities) {
+        console.log('Atividades do front:\n', frontActivities);
+        console.log('\n')
+      }
+      if (backActivities) {
+        console.log('Atividades do back:\n', backActivities);
+        console.log('\n')
+      }
+      if (mobileActivities) {
+        console.log('Atividades do mobile:\n', mobileActivities);
+        console.log('\n')
+      }
+      if (qualityActivities) {
+        console.log('Atividades de qualidade:\n', qualityActivities);
+        console.log('\n')
+      }
+      if (bugsActivities) {
+        console.log('Atividades de bugs:\n', bugsActivities);
+        console.log('\n')
+      }
+      if (generalActivities) {
+        console.log('Atividades gerais:\n', generalActivities);
+        console.log('\n')
+      }
+      console.log('\n============================================================')
+
     } catch (err) {
       console.log('Erro ao abrir o arquivo ', path, '\n', err);
     }

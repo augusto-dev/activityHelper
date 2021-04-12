@@ -34,6 +34,8 @@ getYear().then(() => {
                 front_end: [],
                 back_end: [],
                 mobile: [],
+                quality: [],
+                bugs: [],
                 general: []
             }
         }
